@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MessagePost index{% endblock %}
+
+{% block body %}
+    <h1>MessagePost index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>CreatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for message_post in message_posts %}
+            <tr>
+                <td>{{ message_post.MessageField }}</td>
+                <td>{{ message_post.CreatedAt ? message_post.CreatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('message_post_show', {'id': message_post.id}) }}">show</a>
+                    <a href="{{ path('message_post_edit', {'id': message_post.id}) }}">edit</a>
+                    <a href="{{ path('message_post_delete', {'id': message_post.id}) }}">delete</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

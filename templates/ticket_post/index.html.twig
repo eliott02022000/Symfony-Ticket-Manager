@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} TicketPost index {% endblock %}
+
+{% block body %}
+
+    {% if app.user %}
+
+    {# {% if is_granted('IS_AUTHENTICATED_ANONYMOUSLY') %}
+        <p> Simple user </p>
+    {% endif %} #}
+        <h1 class="myticket">TicketPost index</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>User</th>
+                    <th>Date</th>
+                    <th>Message</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for ticket_post in ticket_posts %}
+                {% for message_post in ticket_post.messagePosts %}
+                    {% for user in users %}
+                        {% if user.email == mycurrentuser.email|default(null) %}
+
+                            <tr>
+                                <td>{{ ticket_post.title }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ ticket_post.createdAt ? ticket_post.createdAt|date('d-m-Y à H:i') : '' }}</td>
+                                <td>{{ message_post.MessageField }}</td>
+
+                                <td>
+                                    <a href="{{ path('ticket_post_show', {'id': ticket_post.id}) }}">show</a>
+                                    <a href="{{ path('ticket_post_edit', {'id': ticket_post.id}) }}">edit</a>
+                                    <a href="{{ path('ticket_post_delete', {'id': ticket_post.id}) }}">delete</a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% else %}
+        <h1> You have to be connected </h1>
+    {% endif %}
+    
+
+{% endblock %}
+
+        
+
+
+
+

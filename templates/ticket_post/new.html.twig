@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New TicketPost{% endblock %}
+
+{% block body %}
+
+
+    {% if app.user %}
+        <h1>Create new TicketPost</h1>
+        {{ include('ticket_post/_form.html.twig') }}
+    {% else %}
+        <p> You have to be log in to create a new ticket </p>
+    {% endif %}
+
+    <a href="{{ path('ticket_post_index') }}">back to list</a>
+{% endblock %}

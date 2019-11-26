@@ -1,0 +1,25 @@
+/* 
+$primary: darken(#428bca, 20%);
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap"; */
+
+#login {
+    color: red;
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+body {
+    text-align: center;
+}
+
+.required {
+    margin-right: 20px;
+}
+
+.myticket {
+    margin-bottom: 50px;
+}

@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MessagePost{% endblock %}
+
+{% block body %}
+    {% if app.user %}
+        <h1>Create new MessagePost</h1>
+
+        {{ include('message_post/_form.html.twig') }}
+    {% else %}
+        <p> You have to be log in to create a new message </p>
+    {% endif %}
+
+    <a class="nav-link active" href="{{ path('message_post_index') }}">back to list</a>
+
+
+    {# <a >back to list</a> #}
+{% endblock %}
